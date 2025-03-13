@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		25703EF12D82598000FB3DBB /* RecipeImageModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 25703EEF2D82598000FB3DBB /* RecipeImageModel.xcdatamodeld */; };
-		25703EF72D826BE500FB3DBB /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 25703EF62D826BE400FB3DBB /* Documentation.docc */; };
-		25703EF82D826BE500FB3DBB /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 25703EF62D826BE400FB3DBB /* Documentation.docc */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,7 +23,6 @@
 /* Begin PBXFileReference section */
 		25703EB22D81256000FB3DBB /* RecipesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		25703EF02D82598000FB3DBB /* RecipeImageModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RecipeImageModel.xcdatamodel; sourceTree = "<group>"; };
-		25703EF62D826BE400FB3DBB /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
 		25FF880D2D809E6E003F9A68 /* Recipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Recipes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -63,7 +60,6 @@
 		25FF88042D809E6E003F9A68 = {
 			isa = PBXGroup;
 			children = (
-				25703EF62D826BE400FB3DBB /* Documentation.docc */,
 				25703EEF2D82598000FB3DBB /* RecipeImageModel.xcdatamodeld */,
 				25FF880F2D809E6E003F9A68 /* Recipes */,
 				25703EB32D81256000FB3DBB /* RecipesTests */,
@@ -189,7 +185,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25703EF82D826BE500FB3DBB /* Documentation.docc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,7 +192,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25703EF72D826BE500FB3DBB /* Documentation.docc in Sources */,
 				25703EF12D82598000FB3DBB /* RecipeImageModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

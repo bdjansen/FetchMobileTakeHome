@@ -36,7 +36,7 @@ struct RecipeListStateView: View {
                 ProgressView()
             case .loaded:
                 LazyVStack(alignment: .leading, spacing: 10) {
-                    ForEach(viewModel.getFilteredRecipes(), id: \.uuid) { recipe in
+                    ForEach(viewModel.getFilteredRecipes()) { recipe in
                         RecipeCell(viewModel: viewModel.cellViewModel(recipe: recipe))
                     }
                 }

@@ -32,7 +32,7 @@ class RecipeListServiceImpl: RecipeListService {
     
     func getImage(recipe: Recipe) async throws -> UIImage {
         guard let photo_url_small = recipe.photo_url_small else { throw ImageError.noImage }
-        if let image = try await imageCache.getImage(key: photo_url_small) { return image }
+        if let image = await imageCache.getImage(key: photo_url_small) { return image }
         let image = try await imageRepository.get(urlString: photo_url_small)
         await imageCache.setImage(image, key: photo_url_small)
         return image

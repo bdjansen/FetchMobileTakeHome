@@ -11,6 +11,7 @@ import UIKit
 enum ImageError: Error {
     case badString
     case noImage
+    case networkError
 }
 
 protocol ImageRepository {
@@ -26,9 +27,15 @@ class ImageRepositoryImpl: ImageRepository {
     
     func get(urlString: String) async throws -> UIImage {
         guard let url = URL(string: urlString) else { throw ImageError.badString }
-        let response = try await self.urlSession.data(from: url)
-        let (data, _) = response
-        guard let image = UIImage(data: data) else { throw ImageError.noImage }
-        return image
+        do {
+            let response = try await self.urlSession.data(from: url)
+            let (data, _) = response
+            guard let image = UIImage(data: data) else { throw ImageError.noImage }
+            return image
+        } catch let error as ImageError {
+            throw error
+        } catch {
+            throw ImageError.networkError
+        }
     }
 }
