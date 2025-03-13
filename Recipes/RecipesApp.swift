@@ -21,13 +21,13 @@ struct RecipesApp: App {
     }
     
     private func getRecipeView() -> RecipeListView {
-        let recipeListRepository = RecipeListRepositoryImpl(urlSession: .shared)
-        let imageRepository = ImageRepositoryImpl(urlSession: .shared)
+        let recipeListApi = RecipeListAPIImpl(urlSession: .shared)
+        let recipeListRepository = RecipeListRepositoryImpl(api: recipeListApi)
+        let imageApi = ImageAPIImpl(urlSession: .shared)
         let imageCache = ImageCacheImpl(persistanceContainer: NSPersistentContainer(name: "RecipeImageModel"))
-        let service = RecipeListServiceImpl(recipeListRepository: recipeListRepository,
-                                            imageRepository: imageRepository,
-                                            imageCache: imageCache)
-        let viewModel = RecipeListViewModel(service: service)
+        let imageRepository = ImageRepositoryImpl(api: imageApi, cache: imageCache)
+        let viewModel = RecipeListViewModel(recipeListRepository: recipeListRepository,
+                                            imageRepository: imageRepository)
         return RecipeListView(viewModel: viewModel)
     }
 }

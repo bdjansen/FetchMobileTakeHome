@@ -18,16 +18,19 @@ class RecipeListViewModel: ObservableObject {
     
     @Published var state: State = .initial
     @Published var searchText: String = ""
-    private let service: RecipeListService
+    private let recipeListRepository: RecipeListRepository
+    private let imageRepository: ImageRepository
     
-    init(service: RecipeListService) {
-        self.service = service
+    init(recipeListRepository: RecipeListRepository,
+         imageRepository: ImageRepository) {
+        self.recipeListRepository = recipeListRepository
+        self.imageRepository = imageRepository
     }
     
     public func load() async {
         self.state = .loading
         do {
-            let recipeList = try await service.getRecipeList()
+            let recipeList = try await recipeListRepository.getRecipeList()
             self.state = .loaded(recipeList)
         } catch {
             self.state = .error(error)
@@ -41,6 +44,6 @@ class RecipeListViewModel: ObservableObject {
     }
     
     public func cellViewModel(recipe: Recipe) -> RecipeCellViewModel {
-        return RecipeCellViewModel(recipe: recipe, service: service)
+        return RecipeCellViewModel(recipe: recipe, imageRepository: imageRepository)
     }
 }

@@ -1,31 +1,25 @@
 //
-//  ImageRepository.swift
+//  ImageAPI.swift
 //  Recipes
 //
-//  Created by Blake Jansen on 3/11/25.
+//  Created by Blake Jansen on 3/13/25.
 //
 
 import Foundation
 import UIKit
 
-enum ImageError: Error {
-    case badString
-    case noImage
-    case networkError
+protocol ImageAPI {
+    func getImage(urlString: String) async throws -> UIImage
 }
 
-protocol ImageRepository {
-    func get(urlString: String) async throws -> UIImage
-}
-
-class ImageRepositoryImpl: ImageRepository {
+class ImageAPIImpl: ImageAPI {
     private let urlSession: URLSession
     
     init(urlSession: URLSession) {
         self.urlSession = urlSession
     }
     
-    func get(urlString: String) async throws -> UIImage {
+    func getImage(urlString: String) async throws -> UIImage {
         guard let url = URL(string: urlString) else { throw ImageError.badString }
         do {
             let response = try await self.urlSession.data(from: url)

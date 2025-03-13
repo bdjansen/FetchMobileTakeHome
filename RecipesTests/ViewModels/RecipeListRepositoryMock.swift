@@ -12,7 +12,7 @@ enum TestError: Error {
 }
 
 class RecipeListRepositoryMock: RecipeListRepository {
-    var mockResponse: Result<RecipeList, Error> = .failure(TestError.generic)
+    var mockResponse: Result<RecipeList, Error> = .failure(RecipeListError.networkError)
     func getRecipeList() async throws -> Recipes.RecipeList {
         switch mockResponse {
         case .success(let recipeList):

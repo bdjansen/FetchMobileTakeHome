@@ -19,18 +19,22 @@ class RecipeCellViewModel: ObservableObject {
     
     @Published var state: State = .initial
     let recipe: Recipe
-    private let service: RecipeListService
+    private let imageRepository: ImageRepository
     
     init(recipe: Recipe,
-         service: RecipeListService) {
+         imageRepository: ImageRepository) {
         self.recipe = recipe
-        self.service = service
+        self.imageRepository = imageRepository
     }
     
     public func load() async {
+        guard let urlString = recipe.photo_url_small else {
+            self.state = .error(ImageError.noImage)
+            return
+        }
         self.state = .loading
         do {
-            let image = try await self.service.getImage(recipe: recipe)
+            let image = try await self.imageRepository.getImage(urlString: urlString)
             self.state = .loaded(image)
         } catch {
             self.state = .error(error)

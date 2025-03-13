@@ -36,8 +36,8 @@ struct RecipeListStateView: View {
                 ProgressView()
             case .loaded:
                 LazyVStack(alignment: .leading, spacing: 10) {
-                    ForEach(viewModel.getFilteredRecipes()) { recipe in
-                        RecipeCell(viewModel: viewModel.cellViewModel(recipe: recipe))
+                    ForEach(viewModel.getFilteredRecipes(), id: \.uuid) { recipe in
+                        RecipeCellView(viewModel: viewModel.cellViewModel(recipe: recipe))
                     }
                 }
             case .error(let error):
@@ -45,45 +45,6 @@ struct RecipeListStateView: View {
             }
         }
         .padding(.horizontal, 14)
-    }
-}
-
-struct RecipeCell: View {
-    @StateObject var viewModel: RecipeCellViewModel
-    
-    var body: some View {
-        HStack(alignment: .top, spacing: 10) {
-            Group {
-                switch viewModel.state {
-                case .initial:
-                    EmptyView()
-                case .loading:
-                    ProgressView()
-                case .loaded(let uIImage):
-                    Image(uiImage: uIImage)
-                        .resizable()
-                case .error:
-                    Image(systemName: "x.circle")
-                        .resizable()
-                }
-            }
-            .frame(width: 60, height: 60)
-            VStack(alignment: .leading) {
-                Text(viewModel.recipe.name)
-                    .font(.headline)
-                Text(viewModel.recipe.cuisine)
-                    .font(.subheadline)
-            }
-            Spacer()
-        }
-        .padding(20)
-        .overlay(
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(.gray, lineWidth: 2)
-        )
-        .task {
-            await viewModel.load()
-        }
     }
 }
 
