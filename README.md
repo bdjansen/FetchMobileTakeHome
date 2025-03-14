@@ -22,7 +22,7 @@ I added an error state for network errors.
 
 I added a state for empty recipe lists, also as an error state.
 
-<img src="https://github.com/user-attachments/assets/6f8edee5-f53e-47aa-81f1-06156865fd32" width="200" />
+<img src="https://github.com/user-attachments/assets/d8a3b859-2045-4b37-805e-57509333b7ef" width="200" />
 
 I wanted to add swipe actions to support linking source and youtube to Safari, but I wrote more about being unable to use ``List`` in the tradeoffs section.
 
@@ -33,8 +33,8 @@ I focused primarily on the architecture to make it simple and testable. I starte
 ### Time Spent: Approximately how long did you spend working on this project? How did you allocate your time?
 I spent about 6 hours on this project including testing and documentation. I wrote tests as I developed components. Notes:
 * I spent 1 hour on data layer, including initial architectural setup and API calls.
-* I spent the next 2 hours setting up the viewmodels and views. This included decided which features I wanted to include within the app.
-   * This also includes trying out different extra features. Filtering made it through the final setup, but at one point I also included showing a detail view and swipe actions. I removed the detail view after re-reading the instructions ("one screen") and did not want to use ``List`` because I did not want bugs in the "production" version of this.
+* I spent the next 2 hours setting up the viewmodels and views. This includes deciding which features I wanted to include within the app.
+   * This also includes playing with extra features. Filtering made it through the final result, but I also tried showing a detail view and swipe actions. I removed the detail view after re-reading the instructions ("one screen") and did not want to use ``List`` because I did not want bugs in the "production" version of this.
 * I spent 2 hours strictly on image caching with CoreData. I initially started with NSCache to get the logic functional, but this was my first time using CoreData to implement caching with persistence. This also included the time to learn how to use CoreData.
 * I spent 1 hour on refactoring, GitHub setup, and documentation.
 
@@ -45,7 +45,7 @@ I spent about 6 hours on this project including testing and documentation. I wro
 * I chose not to save the persistance container for the ``ImageCache`` because I wanted to make sure it uses the network call on app start.
 
 ### Weakest Part of the Project: What do you think is the weakest part of your project?
-Architecturally, I think the weakest part of my project is the ImageCache, mostly from my inexperience with CoreData. 
+Architecturally, I think the weakest part of my project is the ImageCache, mostly from my inexperience with CoreData. I tested to make sure everything was functional with caching, but I believe if I spent more time with the library I would find a more modern approach to using it. Getting it functional was my top priority, so I am still happy with the result.
 
 Visually, the weakest part of the app are the error states. I added the error states to show I considered them, but did not want to spend extra time improving the UX and seem like I was spending too much time on the exercise.
 
