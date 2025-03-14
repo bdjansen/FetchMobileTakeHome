@@ -21,7 +21,7 @@ struct RecipesApp: App {
     }
     
     private func getRecipeView() -> RecipeListView {
-        let recipeListApi = RecipeListAPIImpl(urlSession: .shared)
+        let recipeListApi = RecipeListAPIImpl(urlSession: .shared, retrievalType: .base)
         let recipeListRepository = RecipeListRepositoryImpl(api: recipeListApi)
         let imageApi = ImageAPIImpl(urlSession: .shared)
         let imageCache = ImageCacheImpl(persistanceContainer: NSPersistentContainer(name: "RecipeImageModel"))

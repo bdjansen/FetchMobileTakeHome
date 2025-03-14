@@ -9,8 +9,11 @@ import Foundation
 import UIKit
 import CoreData
 
+/// Store images for later retrieval.
 protocol ImageCache {
+    /// Retrieve an image from the cache.
     func getImage(key: String) async -> UIImage?
+    /// Add an image to the cache.
     func setImage(_ image: UIImage, key: String) async
 }
 

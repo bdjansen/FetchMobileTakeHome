@@ -7,7 +7,9 @@
 
 import Foundation
 
+/// An abstraction to simplify recipe retrieval.
 protocol RecipeListRepository {
+    /// Retrieve a list of recipes.
     func getRecipeList() async throws -> RecipeList
 }
 

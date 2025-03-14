@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// Display for a single recipe.
 struct RecipeCellView: View {
     @StateObject var viewModel: RecipeCellViewModel
     

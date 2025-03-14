@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+/// Model for displaying a recipe image and information.
 @MainActor
 class RecipeCellViewModel: ObservableObject {
     enum State {

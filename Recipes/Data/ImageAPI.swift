@@ -8,7 +8,9 @@
 import Foundation
 import UIKit
 
+/// Object to to retrieve an image from a network store.
 protocol ImageAPI {
+    /// Retrieve an image for a given url.
     func getImage(urlString: String) async throws -> UIImage
 }
 

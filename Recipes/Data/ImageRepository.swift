@@ -14,7 +14,9 @@ enum ImageError: Error {
     case networkError
 }
 
+/// An abstraction to simplify image retrieval.
 protocol ImageRepository {
+    /// Retrieve an image.
     func getImage(urlString: String) async throws -> UIImage
 }
 

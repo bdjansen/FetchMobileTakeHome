@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Model for displaying a list of recipes.
 @MainActor
 class RecipeListViewModel: ObservableObject {
     enum State {
