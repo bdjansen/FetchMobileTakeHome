@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-// Display a list of recipes.
+/// Display a list of recipes.
 struct RecipeListView: View {
     @StateObject var viewModel: RecipeListViewModel
     
